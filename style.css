@@ -14,19 +14,14 @@ body {
     left: 0;
     width: 100vw;
     height: 100vh;
-    
-    /* 初始背景，将由 JS 动态修改 */
-    background: linear-gradient(90deg, hsl(220, 80%, 70%), hsl(270, 80%, 70%));
-    
-    /* 关键：添加平滑过渡，让颜色和角度变化不生硬 */
+    background: linear-gradient(90deg, hsl(170, 50%, 80%), hsl(190, 50%, 80%));
     transition: background 0.5s ease; 
-    
     z-index: -1;
 }
 
 /* --- 内容容器样式 --- */
 .container {
-    max-width: 900px;
+    max-width: 1200px; /* 加宽容器以适配知识图谱 */
     margin: 30px auto;
     padding: 30px 40px;
     border-radius: 10px;
@@ -37,7 +32,7 @@ body {
 .container.main-content {
     background-color: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(8px);
-    margin: 100px auto;
+    margin: 80px auto;
 }
 
 /* --- 导航栏样式 --- */
@@ -58,11 +53,12 @@ body {
     box-shadow: none;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap; /* 适配导航项换行 */
 }
 
 .navbar a {
     color: #ecf0f1;
-    padding: 15px 25px;
+    padding: 15px 20px;
     text-decoration: none;
     text-align: center;
     font-weight: 500;
@@ -85,6 +81,11 @@ h2 {
     border-bottom: 3px solid #3498db;
     padding-bottom: 10px;
     margin-bottom: 20px;
+}
+
+h3 {
+    color: #3498db;
+    margin-top: 25px;
 }
 
 /* --- 个人信息区域 --- */
@@ -131,6 +132,29 @@ li {
     min-width: 110px;
 }
 
+/* --- 知识图谱专属样式 --- */
+.knowledge-intro {
+    margin-bottom: 30px;
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+.graph-container {
+    width: 100%;
+    height: 600px; /* 固定图谱高度 */
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    background-color: rgba(255, 255, 255, 0.95);
+    margin: 20px 0;
+}
+
+.graph-note {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: rgba(52, 152, 219, 0.05);
+    border-radius: 8px;
+}
+
 /* --- 响应式设计（移动端适配） --- */
 @media (max-width: 768px) {
     .profile-section {
@@ -148,10 +172,15 @@ li {
     }
 
     .container {
-        padding: 20px;
+        padding: 20px 15px;
+        max-width: 95%;
     }
 
     .container.main-content {
         margin: 50px auto;
+    }
+
+    .graph-container {
+        height: 400px; /* 移动端缩小图谱高度 */
     }
 }
